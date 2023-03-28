@@ -1,40 +1,26 @@
-## 401 Python LAB - Class 06
-Project: ten thousand 
-Author: Ethan Albers and Dominick Martin
+# Lab 06 - ten-thousand
+## Author: Ethan Albers and Dominick Martin
 
 ### Links and Resources
 - Obtained tests from class repository 
 - ChatGPT 
-- [ten thousand repository](https://github.com/ekalbers/ten-thousand.git)
+- [ten-thousand repository](https://github.com/ekalbers/ten-thousand.git)
 
-
-
-### How to initialize/run your application  game_logic.py
+### How to initialize/run your application
 ~~~
 python3 -m env .venv
 source .venv/bin/activate
 pip install pytest
 ~~~
-
+#### run:`python3 ten_thousand/game_logic.py`
 
 ### How do you run tests?
 
-#### run:`python3 ten_thousand/gamelogic.py`
-#### tests:`pytest
+#### tests:`pytest`
 
-
-
-
-
-### Any tests of note?
-
-3-37-2203
-tests/test_calculate_score.py ......FFFFFFFFF...FFFF..FFFF..FFFF..FFFF..FFFF..FFFFF.FF                                                                                                                                                             [ 90%] 
-tests/test_roll_dice.py ......   
-
-
-
-### Describe any tests that you did not complete, skipped, etc
+### Any tests of note? 
+- tests found in class repo did not all match up with the given rules found online. Original expected values places in comments above or to the side.
+- leftover ones and fives tests added to parameterized tests
 
 
 
