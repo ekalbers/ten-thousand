@@ -2,6 +2,13 @@ import random
 
 
 class GameLogic:
+    def __init__(self):
+        self.total_points = 0
+        self.current_points = 0
+        self.round = 1
+        self.set_aside_dice = []
+        self.dice_left = 6
+
     @staticmethod
     def calculate_score(dice_roll):
         dice_counts = [dice_roll.count(i) for i in range(1, 7)]
@@ -29,6 +36,31 @@ class GameLogic:
                         score += (count * 50)
 
         return score
+
+    def new_round(self):
+        self.current_points = 0
+        self.increment_round()
+        self.set_aside_dice = []
+        self.dice_left = 6
+
+    def set_current_points(self, points):
+        self.current_points = self.current_points + points
+
+    def set_aside(self, string, dice):
+        chosen_dice = string.split(' ')
+        send_back = ()
+        for x in chosen_dice:
+            if int(x) in dice:
+                send_back = send_back + (int(x),)
+                self.set_aside_dice += [int(x)]
+                self.dice_left -= 1
+        return send_back
+
+    def bank_points(self, points):
+        self.total_points += points
+
+    def increment_round(self):
+        self.round += 1
 
     @staticmethod
     def roll_dice(num_dice):
