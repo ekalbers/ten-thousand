@@ -56,12 +56,11 @@ class GameLogic:
                 self.dice_left -= 1
         return send_back
 
-    def bank_points(self, points):
-        self.total_points += points
+    def bank_points(self):
+        self.total_points += self.current_points
 
     def increment_round(self):
         self.round += 1
 
-    @staticmethod
-    def roll_dice(num_dice):
-        return tuple(random.randint(1, 6) for _ in range(num_dice))
+    def roll_dice(self):
+        return tuple(random.randint(1, 6) for _ in range(self.dice_left))
