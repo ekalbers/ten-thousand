@@ -5,7 +5,7 @@ class GameLogic:
     def __init__(self):
         self.total_points = 0
         self.current_points = 0
-        self.round = 1
+        self.round = 0
         self.set_aside_dice = []
         self.dice_left = 6
 
@@ -37,11 +37,39 @@ class GameLogic:
 
         return score
 
+    @staticmethod
+    def validate_keepers(roll, keep):
+        test_roll = list(roll)
+        for x in keep:
+            if x in test_roll:
+                test_roll.remove(x)
+            else:
+                return False
+        return True
+
+    @staticmethod
+    def get_scorers(dice):
+        scorers = []
+        numbers = [0, 0, 0, 0]
+        for x in dice:
+            if x in [1, 5]:
+                scorers.append(x)
+            else:
+                numbers[x - 2] += 1
+        for i, count in enumerate(numbers):
+            if count > 2:
+                scorers.extend([i + 2] * (count - 2))
+        return scorers
+
     def new_round(self):
         self.current_points = 0
         self.increment_round()
         self.set_aside_dice = []
         self.dice_left = 6
+
+    def hot_dice(self):
+        self.dice_left = 6
+        self.set_aside_dice = []
 
     def set_current_points(self, points):
         self.current_points = self.current_points + points
@@ -62,5 +90,6 @@ class GameLogic:
     def increment_round(self):
         self.round += 1
 
-    def roll_dice(self):
-        return tuple(random.randint(1, 6) for _ in range(self.dice_left))
+    @staticmethod
+    def roll_dice(dice):
+        return tuple(random.randint(1, 6) for _ in range(dice))
