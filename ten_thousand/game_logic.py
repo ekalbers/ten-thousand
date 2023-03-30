@@ -54,8 +54,14 @@ class GameLogic:
         for x in dice:
             if x in [1, 5]:
                 scorers.append(x)
-            else:
-                numbers[x - 2] += 1
+            elif x == 2:
+                numbers[0] += 1
+            elif x == 3:
+                numbers[1] += 1
+            elif x == 4:
+                numbers[2] += 1
+            elif x == 6:
+                numbers[3] += 1
         for i, count in enumerate(numbers):
             if count > 2:
                 scorers.extend([i + 2] * (count - 2))
