@@ -3,7 +3,7 @@ from ten_thousand.game_logic import GameLogic
 dice_roller = GameLogic.roll_dice
 
 
-def play(roller):
+def play(roller=GameLogic.roll_dice):
     global dice_roller
     dice_roller = roller
     global game
