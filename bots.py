@@ -165,16 +165,32 @@ class EvilBrendan(BaseBot):
             return "r"
 
 
-class YourBot(BaseBot):
+class RollingThunder(BaseBot):
     def _roll_bank_or_quit(self):
-        if self.dice_remaining > 3:
+
+        # if self.unbanked_points < 200:
+        #     return 'r'
+        if self.dice_remaining > 3 or self.unbanked_points < 300:
             return 'r'
         return "b"
 
     def _enter_dice(self):
-        """simulate user entering which dice to keep.
-        Defaults to all scoring dice"""
-
+        # dice = GameLogic.get_scorers(self.last_roll)
+        # score = list(dice)
+        # dice_count = [0, 0, 0, 0, 0, 0]
+        # for x in dice:
+        #     dice_count[x-1] += 1
+        # if self.dice_remaining == 6 and len(dice) < 4:
+        #     if len(score) > dice_count[4] < 3:
+        #         for x in range(dice_count[4]):
+        #             score.remove(5)
+        #     if len(score) > dice_count[1] < 4:
+        #         for x in range(dice_count[1]):
+        #             score.remove(2)
+        # score_string = ""
+        # for value in tuple(score):
+        #     score_string += str(value)
+        # self.report("> " + score_string)
         return super()._enter_dice()
 
 
@@ -183,7 +199,8 @@ if __name__ == "__main__":
     # NervousNellie.play(num_games)
     # MiddlingMargaret.play(num_games)
     # DaringDarla.play(num_games)
-    YourBot.play(num_games)
+    RollingThunder.play(num_games)
     # MarkBot.play(num_games)
     # EvilIncarnateBot.play(num_games)
     # EvilBrendan.play(num_games)
+    # YoniBot.play(num_games)
